@@ -1,0 +1,209 @@
+﻿<UserControl x:Class="MonWpfApp.Controls.MainControl" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Spares="clr-namespace:MonWpfApp.Controls.Spares" 
+             mc:Ignorable="d" 
+             d:DesignHeight="1078.576" d:DesignWidth="705.674">
+    <UserControl.Resources>
+        <Style x:Key ="roundButtonTemp"  TargetType ="{x:Type Button}">
+            <Setter Property ="Foreground" Value ="Black"/>
+            <Setter Property ="FontWeight" Value ="Bold"/>
+            <Setter Property ="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType ="{x:Type Button}">
+                        <Grid >
+                            <Ellipse x:Name="ellipse" Fill="White" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
+
+                            <Ellipse Name ="OuterRing" Width ="260" Height ="260" />
+                            <Ellipse Name ="InnerRing" Width ="260" Height ="260" />
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property ="IsMouseOver" Value ="True">
+                                <Setter TargetName ="InnerRing" Property ="Opacity" Value ="0.6"/>
+                            </Trigger>
+                            <Trigger Property ="IsPressed" Value ="True">
+                                <Setter TargetName ="OuterRing" Property ="Height" Value ="200"/>
+                                <Setter TargetName ="OuterRing" Property ="Width" Value ="200"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ControlTemplate x:Key="GoButtonControlTemplate" TargetType="{x:Type Button}">
+            <Grid>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualStateGroup.Transitions>
+                            <VisualTransition GeneratedDuration="0:0:0.4" To="MouseOver"/>
+                            <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.4"/>
+                            <VisualTransition GeneratedDuration="0:0:0.3" To="Pressed"/>
+                            <VisualTransition From="Pressed" GeneratedDuration="0:0:0.3"/>
+                        </VisualStateGroup.Transitions>
+                        <VisualState x:Name="Normal"/>
+                        <VisualState x:Name="MouseOver">
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ellipse">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="1.2"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ellipse">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="1.2"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="ellipse">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="GO">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="45"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GO">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="-12.8"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="GO">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="-5.6"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Disabled"/>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Ellipse x:Name="ellipse" Fill="White" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="-10,0,0,0" RenderTransformOrigin="0.5,0.5">
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <TextBlock x:Name="GO" Foreground="#FFF35B61" FontSize="36" FontFamily="GothamHTF-Light" Height="75" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="638" LineHeight="36" TextAlignment="Center" TextWrapping="Wrap" Text="GO" Canvas.Top="1049" Width="122" Margin="-22,35.7,0,-10.7" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="RandomButtonControlTemplate" TargetType="{x:Type Button}">
+            <Grid>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualStateGroup.Transitions>
+                            <VisualTransition GeneratedDuration="0:0:0.4" To="MouseOver"/>
+                            <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.4"/>
+                            <VisualTransition GeneratedDuration="0:0:0.3" To="Pressed"/>
+                            <VisualTransition From="Pressed" GeneratedDuration="0:0:0.3"/>
+                        </VisualStateGroup.Transitions>
+                        <VisualState x:Name="Normal"/>
+                        <VisualState x:Name="MouseOver">
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ellipse">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="1.2"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ellipse">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="1.2"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="ellipse">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="GO">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="35"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GO">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="-2.8"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="GO">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="-1.6"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Disabled"/>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Ellipse x:Name="ellipse" Fill="White" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="-4,0,0,0" RenderTransformOrigin="0.5,0.5">
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Image x:Name="GO" Source="/MonWpfApp;component/Images/MON_shuffleIcon@2x.png"  Width="60" Height="60">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="220"/>
+                <ColumnDefinition Width="Auto" MinWidth="220"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" MinHeight="220"/>
+                <RowDefinition Height="Auto" MinHeight="220"/>
+                <RowDefinition Height="Auto" MinHeight="220"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Spares:AdvancedButton x:Name="AdvancedButton1" Grid.Row="0" Grid.Column="0" />
+            <Spares:AdvancedButton x:Name="AdvancedButton2" Grid.Row="0" Grid.Column="1" />
+            <Spares:AdvancedButton x:Name="AdvancedButton3" Grid.Row="1" Grid.Column="0" />
+            <Spares:AdvancedButton x:Name="AdvancedButton4" Grid.Row="1" Grid.Column="1" />
+            <Spares:AdvancedButton x:Name="AdvancedButton5" Grid.Row="2" Grid.Column="0" />
+            <Spares:AdvancedButton x:Name="AdvancedButton6" Grid.Row="2" Grid.Column="1" />
+            <Grid Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                
+                <Button Cursor="Hand" Grid.Column="0" HorizontalAlignment="Center"  VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="100" Height="100" Click="Button_Click" Template="{StaticResource RandomButtonControlTemplate}" Margin="138,5,0,0">
+
+                    <ContentControl>
+                        <Image Source="/MonWpfApp;component/Images/MON_shuffleIcon@2x.png"  Width="60" Height="60">
+
+                        </Image>
+                    </ContentControl>
+                </Button>
+                <Button  Cursor="Hand"  Grid.Column="1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="100" Height="100" Template="{StaticResource GoButtonControlTemplate}" Margin="30,5,0,0">
+                    <ContentControl>
+                        <Image Source="/MonWpfApp;component/Images/MON_GO@2x.png" Width="60" Height="60" />
+                    </ContentControl>
+                </Button>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

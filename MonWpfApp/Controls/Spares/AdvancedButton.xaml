@@ -1,0 +1,177 @@
+﻿<UserControl x:Class="MonWpfApp.Controls.Spares.AdvancedButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dataSource="clr-namespace:MonWpfApp.Controls.DataSource"
+             mc:Ignorable="d" 
+             Height="200" Width="200">
+    <UserControl.DataContext>
+        <dataSource:SiteMap x:Name="SiteMap"/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <ResourceDictionary x:Name="res">
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+
+            <Style x:Key ="roundButtonTemplate4Elements" TargetType ="{x:Type Button}">
+                <Setter Property ="Foreground" Value ="Black"/>
+                <Setter Property ="FontWeight" Value ="Bold"/>
+                <Setter Property ="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType ="{x:Type Button}">
+                            <Grid >
+                                <Canvas x:Name="V5" Width="200" Height="200" Initialized="V5_Initialized" Margin="8,-40,0,0">
+
+                                    <Path x:Name="SMALL" Data="F1M127.435,1.703C196.938,1.703 253.281,58.111 253.281,127.694 253.281,197.278 196.938,253.686 127.435,253.686 57.932,253.686 1.588,197.278 1.588,127.694 1.588,58.111 57.932,1.703 127.435,1.703z" Fill="Black" Height="255" Canvas.Left="-6" Opacity="0.2" Canvas.Top="-6" Width="255"/>
+
+                                    <Path x:Name="_4_" Data="F1M1.608,2.845C1.608,2.845 1.741,1.073 1.741,1.073 63.468,5.792 113.755,54.147 121.312,116.054 121.312,116.054 119.561,116.27 119.561,116.27 112.108,55.201 62.501,7.5 1.608,2.845z" Fill="Black" Height="118" Canvas.Left="132" Canvas.Top="-12" Width="123"/>
+                                    <Path x:Name="_6" Data="F1M1.608,115.163C1.608,115.163 1.741,116.935 1.741,116.935 63.468,112.217 113.755,63.861 121.312,1.954 121.312,1.954 119.561,1.739 119.561,1.739 112.108,62.807 62.501,110.509 1.608,115.163z" Fill="Black" Height="118" Canvas.Left="132" Canvas.Top="137" Width="123"/>
+                                    <Path x:Name="_5" Data="F1M3.598,1.017C3.598,1.017 1.831,1.206 1.831,1.206 8.504,62.753 58.429,111.482 120.545,117.073 120.545,117.073 120.704,115.316 120.704,115.316 59.43,109.802 10.18,61.732 3.598,1.017z" Fill="Black" Height="119" Canvas.Left="-12" Canvas.Top="137" Width="122"/>
+                                    <Path x:Name="_4" Data="F1M3.654,117.935C3.654,117.935 1.888,117.746 1.888,117.746 8.56,56.199 58.486,7.47 120.601,1.879 120.601,1.879 120.761,3.636 120.761,3.636 59.487,9.15 10.237,57.22 3.654,117.935z" Fill="Red" Height="119" Canvas.Left="-13" Canvas.Top="-12" Width="122"/>
+
+                                    <Canvas.LayoutTransform>
+                                        <ScaleTransform ScaleX="0.76" ScaleY="0.76" />
+                                    </Canvas.LayoutTransform>
+
+                                </Canvas>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property ="IsMouseOver" Value ="True">
+                                    <Setter TargetName ="V5" Property ="Opacity" Value ="0.6"/>
+                                </Trigger>
+                                <Trigger Property ="IsPressed" Value ="True">
+                                    <Setter TargetName ="V5" Property ="Height" Value ="200"/>
+                                    <Setter TargetName ="V5" Property ="Width" Value ="200"/>
+                                </Trigger>
+
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key ="roundButtonTemplate3Elements" TargetType ="{x:Type Button}">
+                <Setter Property ="Foreground" Value ="Black"/>
+                <Setter Property ="FontWeight" Value ="Bold"/>
+                <Setter Property ="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType ="{x:Type Button}">
+                            <Grid >
+                                <Canvas x:Name="V5" Width="200" Height="200" Initialized="V5_Initialized" Margin="8,-44,0,0">
+
+                                    <Path x:Name="SAVORY" Data="F1M127.426,1.703C196.929,1.703 253.273,58.111 253.273,127.694 253.273,197.278 196.929,253.686 127.426,253.686 57.923,253.686 1.58,197.278 1.58,127.694 1.58,58.111 57.923,1.703 127.426,1.703z" Fill="Black" Height="255" Canvas.Left="4" Opacity="0.2" Canvas.Top="-1.6" Width="255"/>
+
+                                    <Path x:Name="_16" Data="F1M204.183,79.309C199.721,69.244 193.962,59.765 187.068,51.134 184.112,47.434 180.917,43.857 177.572,40.503 174.325,37.247 170.868,34.133 167.296,31.246 144.572,12.88 115.95,2.765 86.701,2.765 56.056,2.765 26.379,13.758 3.14,33.719 3.14,33.719 1.995,32.378 1.995,32.378 25.553,12.144 55.636,1.001 86.701,1.001 116.35,1.001 145.365,11.254 168.401,29.872 172.021,32.799 175.526,35.955 178.817,39.254 182.208,42.655 185.446,46.28 188.442,50.031 195.43,58.78 201.267,68.389 205.793,78.592 205.793,78.592 204.183,79.309 204.183,79.309z" Fill="Black" Height="81" Canvas.Left="45" Canvas.Top="-8.6" Width="207"/>
+                                    <Path x:Name="_15" Data="F1M2.105,160.176C2.105,160.176 1.894,158.431 1.894,158.431 66.509,150.719 115.235,95.906 115.235,30.93 115.235,21.187 114.136,11.473 111.967,2.058 111.967,2.058 113.687,1.665 113.687,1.665 115.885,11.208 117,21.054 117,30.93 117,96.795 67.606,152.359 2.105,160.176z" Fill="Black" Height="162" Canvas.Left="147" Canvas.Top="96.4" Width="118"/>
+                                    <Path x:Name="_3_" Data="F1M118.752,212.178C86.867,208.93 57.385,193.983 35.735,170.09 13.936,146.033 1.931,114.866 1.931,82.331 1.931,52.802 11.52,24.948 29.662,1.779 29.662,1.779 31.044,2.868 31.044,2.868 13.148,25.723 3.689,53.201 3.689,82.331 3.689,114.426 15.532,145.172 37.036,168.903 58.394,192.474 87.477,207.219 118.93,210.424 118.93,210.424 118.752,212.178 118.752,212.178z" Fill="Black" Height="214" Canvas.Left="-4" Canvas.Top="44.4" Width="120"/>
+
+                                    <Canvas.LayoutTransform>
+                                        <ScaleTransform ScaleX="0.76" ScaleY="0.76" />
+                                    </Canvas.LayoutTransform>
+
+
+                                </Canvas>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property ="IsMouseOver" Value ="True">
+                                    <Setter TargetName ="V5" Property ="Opacity" Value ="0.6"/>
+                                </Trigger>
+                                <Trigger Property ="IsPressed" Value ="True">
+                                    <Setter TargetName ="V5" Property ="Height" Value ="200"/>
+                                    <Setter TargetName ="V5" Property ="Width" Value ="200"/>
+                                </Trigger>
+
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key ="roundButtonTemplate2Elements" TargetType ="{x:Type Button}">
+                <Setter Property ="Foreground" Value ="Black"/>
+                <Setter Property ="FontWeight" Value ="Bold"/>
+                <Setter Property ="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType ="{x:Type Button}">
+                            <Grid >
+                                <Canvas x:Name="V5" Width="200" Height="200" Initialized="V5_Initialized" Margin="20,-44,0,0">
+                                    <Path x:Name="spicy" Data="F1M127.426,1.316C196.929,1.316 253.273,57.723 253.273,127.307 253.273,196.89 196.929,253.298 127.426,253.298 57.923,253.298 1.58,196.89 1.58,127.307 1.58,57.723 57.923,1.316 127.426,1.316z" Fill="Black" Height="255" Canvas.Left="1.6" Opacity="0.2" Canvas.Top="2" Width="255"/>
+                                    <Path x:Name="_2" Data="F1M1.324,262.789C33.87,260.051 64.048,245.241 86.3,221.087 108.679,196.796 121.003,165.192 121.003,132.096 121.003,99.083 108.733,67.539 86.453,43.272 64.306,19.148 34.244,4.294 1.802,1.444 1.802,1.444 1.648,3.21 1.648,3.21 33.649,6.02 63.306,20.675 85.154,44.472 107.132,68.411 119.236,99.53 119.236,132.096 119.236,164.744 107.078,195.921 85.002,219.884 63.051,243.711 33.281,258.321 1.176,261.023 1.176,261.023 1.324,262.789 1.324,262.789z" Fill="Black" Height="264" Canvas.Left="140.6" Canvas.Top="-3" Width="123"/>
+                                    <Path x:Name="_1" Data="F1M121.667,262.789C89.121,260.051 58.943,245.241 36.692,221.087 14.313,196.796 1.989,165.192 1.989,132.096 1.989,99.083 14.259,67.539 36.538,43.272 58.685,19.148 88.748,4.294 121.189,1.444 121.189,1.444 121.343,3.21 121.343,3.21 89.342,6.02 59.686,20.675 37.838,44.472 15.86,68.411 3.756,99.53 3.756,132.096 3.756,164.744 15.913,195.921 37.989,219.884 59.94,243.711 89.711,258.321 121.816,261.023 121.816,261.023 121.667,262.789 121.667,262.789z" Fill="Black" Height="264" Canvas.Left="-7.4" Canvas.Top="-3" Width="123"/>
+                                    <Canvas.LayoutTransform>
+                                        <ScaleTransform ScaleX="0.76" ScaleY="0.76" />
+                                    </Canvas.LayoutTransform>
+                                </Canvas>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property ="IsMouseOver" Value ="True">
+                                    <Setter TargetName ="V5" Property ="Opacity" Value ="0.6"/>
+                                </Trigger>
+                                <Trigger Property ="IsPressed" Value ="True">
+                                    <Setter TargetName ="V5" Property ="Height" Value ="200"/>
+                                    <Setter TargetName ="V5" Property ="Width" Value ="200"/>
+                                </Trigger>
+
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key ="roundButtonTemplate5Elements" TargetType ="{x:Type Button}">
+                <Setter Property ="Foreground" Value ="Black"/>
+                <Setter Property ="FontWeight" Value ="Bold"/>
+                <Setter Property ="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType ="{x:Type Button}" >
+                            <Grid >
+                                <Canvas x:Name="V5" Width="200" Height="200" Initialized="V5_Initialized" Margin="8,-40,0,0">
+                                    <Path x:Name="breakfast" Data="F1M127.426,1.928C196.929,1.928 253.273,58.336 253.273,127.919 253.273,197.503 196.929,253.911 127.426,253.911 57.923,253.911 1.58,197.503 1.58,127.919 1.58,58.336 57.923,1.928 127.426,1.928z" Fill="Black" Height="255" Canvas.Left="-0.8" Opacity="0.2" Canvas.Top="-3" Width="255"/>
+
+                                    <Path x:Name="_7" Data="F1M66.222,104.935C64.771,84.649 58.663,65.457 48.067,47.892 36.779,29.178 20.835,13.542 1.957,2.674 1.957,2.674 2.848,1.146 2.848,1.146 21.985,12.164 38.148,28.014 49.59,46.983 60.33,64.789 66.523,84.245 67.995,104.809 67.995,104.809 66.222,104.935 66.222,104.935z" Fill="Black" Height="106" Canvas.Left="191.2" Canvas.Top="8" Width="69"/>
+                                    <Path x:Name="_11" Data="F1M2.011,103.572C2.011,103.572 1.476,101.885 1.476,101.885 10.987,98.855 20.195,94.683 28.844,89.483 60.675,70.339 82.738,38.334 89.376,1.676 89.376,1.676 91.113,1.992 91.113,1.992 84.385,39.152 62.02,71.594 29.751,91.001 20.985,96.272 11.651,100.501 2.011,103.572z" Fill="Black" Height="105" Canvas.Left="166.2" Canvas.Top="149" Width="93"/>
+                                    <Path x:Name="_10" Data="F1M105.612,53.995C65.058,53.995 26.167,35.079 1.297,2.417 1.297,2.417 2.706,1.339 2.706,1.339 30.543,37.898 76.194,56.999 121.837,51.191 121.837,51.191 122.062,52.953 122.062,52.953 116.57,53.652 111.073,53.995 105.612,53.995z" Fill="Black" Height="58" Canvas.Left="19.2" Canvas.Top="205" Width="124"/>
+                                    <Path x:Name="_9" Data="F1M22.743,136.924C1.484,92.26 7.251,40.2 37.793,1.061 37.793,1.061 39.206,2.142 39.206,2.142 9.076,40.753 3.387,92.11 24.358,136.169 24.358,136.169 22.743,136.924 22.743,136.924z" Fill="Black" Height="138" Canvas.Left="-17.8" Canvas.Top="43" Width="41"/>
+                                    <Path x:Name="_8" Data="F1M2.192,39.296C2.192,39.296 1.049,37.955 1.049,37.955 6.504,33.329 12.409,29.105 18.599,25.402 51.125,5.944 90.464,1.547 126.538,13.347 126.538,13.347 125.986,15.021 125.986,15.021 90.404,3.381 51.595,7.716 19.508,26.912 13.4,30.566 7.574,34.732 2.192,39.296z" Fill="Red" Height="41" Canvas.Left="40.2" Canvas.Top="-16" Width="128"/>
+
+                                    <Canvas.LayoutTransform>
+                                        <ScaleTransform ScaleX="0.76" ScaleY="0.76" />
+                                    </Canvas.LayoutTransform>
+                                </Canvas>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+
+                                <Trigger Property ="IsMouseOver" Value ="True">
+                                    <Setter TargetName ="V5" Property ="Opacity" Value ="0.6"/>
+                                </Trigger>
+                                <Trigger Property ="IsPressed" Value ="True">
+                                    <Setter TargetName ="V5" Property ="Height" Value ="200"/>
+                                    <Setter TargetName ="V5" Property ="Width" Value ="200"/>
+                                </Trigger>
+
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+
+
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+
+        <Button  Margin="10" BorderThickness="0" x:Name="BtnWand" Cursor="Hand" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Left" Foreground="{x:Null}"  Background="Transparent"  BorderBrush="Transparent" Click="BtnWand_Click" RenderTransformOrigin="40,40" Style="{DynamicResource roundButtonTemplate3Elements}" >
+            <ContentControl>
+                <Frame HorizontalAlignment="Center" Style="{StaticResource FrameStyle}"  Content="{Binding SelectedPage.PageUri}" SnapsToDevicePixels="True" HorizontalContentAlignment="Left" NavigationUIVisibility="Hidden"  RenderTransformOrigin="0.5,0.5"  VerticalAlignment="Center"  Margin="40,0,0,0" />
+            </ContentControl>
+        </Button>
+
+    </Grid>
+</UserControl>
